@@ -47,7 +47,7 @@ public class IntToEng {
 	    		num = eNum1[handr]+" "+h+" "+eNum1[n%100];
 	    		return num;
 	    	}else if(n<1000){
-	    		num= eNum1[handr]+" "+h+" "+eNum2[n%100/10]+" "+eNum1[n%100];
+	    		num= eNum1[handr]+" "+h+" "+eNum2[n%100/10]+" "+eNum1[n%100%10];
 	    		return num;
 	    	}else if(n==1000){
 	    		num = "thousand";

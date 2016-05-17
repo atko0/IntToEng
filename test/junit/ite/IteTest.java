@@ -65,7 +65,7 @@ public class IteTest {
 	@Test
 	public void テスト141(){
 		IntToEng ite = new IntToEng();
-		String expected = "one hundred fourty one";
+		String expected = "one hundred forty one";
 		String  actual= ite.translateEng(141);
 		assertThat(actual,is(expected));
 	}
