@@ -16,35 +16,46 @@ public class IntToEng {
 	
 	    // 数値を英訳する変換するメソッド
 	    static String translateEng(int n) {
-	    	//0~19
-	    	String[] eNum1 = {"zero", "one", "two", "three", "four",
+	    	//1~19
+	    	String[] eNum1 = {"", "one", "two", "three", "four",
 	    			"five", "six", "seven", "eight", "nine",
 	    			"ten", "eleven", "twelve", "thirteen", "fourteen",
 	    			"fifteen", "sixteen", "seventeen", "eighteen", "nineteen"};
 	    	//20,30,40,50,60,70,80,90
-	    	String[] eNum2 = {"twenty", "thirty", "forty", "fifty", "sixty",
+	    	String[] eNum2 = {"","","twenty", "thirty", "forty", "fifty", "sixty",
 	    	"seventy", "eighty", "ninety"};
 	    	String num = String.valueOf(n);
-	    	if(n>=0&&n<20){
-	    		num=eNum1[n];
+	    	int tenr=n/10;//十の位
+	    	int oner=n%10;//一の位
+	    	int handr=tenr/10;
+	    	String h= "hundred";
+	    	if(n==0){
+	    		num="zero";
 	    		return num;
 	    	}
-	    	else if(n<=20&&n>100){
-	    		String num10 = num.substring(0,1); //10の位
-	    		String num1  = num.substring(1,2);//1の位
+	    	else if(n>0&&n<20){
+	    		num =eNum1[n];
+	    		return num;
+	    	}else if(n<100){
+	    		num = eNum2[tenr]+" "+eNum1[oner];
+	    		return num;
+	    	}else if(n==100){
+	    		num = h;
+	    		return num;
 	    		
-	    		int num10a = Integer.parseInt(num10);
-	    		int num1a = Integer.parseInt(num1);
-	    		
-	    		num=eNum2[num10a-2]+eNum1[num1a+1];
-	    		
-	    	}
-	    	else{
+	    	}else if(n<120){
+	    		num = eNum1[handr]+" "+h+" "+eNum1[n%100];
+	    		return num;
+	    	}else if(n<1000){
+	    		num= eNum1[handr]+" "+h+" "+eNum2[n%100/10]+" "+eNum1[n%100];
+	    		return num;
+	    	}else if(n==1000){
+	    		num = "thousand";
+	    		return num;
+	    	}else {
 	    		num = "範囲外です";
-	    		return num;    		
+	    		return num;
 	    	}
 	    	
-	        return "";
 	    }
-
 }
